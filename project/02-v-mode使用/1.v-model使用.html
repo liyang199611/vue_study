@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="message" v-on:input="valueChange">
+    <h1>{{message}}</h1>
+</div>
+
+<script src="../../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            message:"你好啊"
+        },
+        methods:{
+            valueChange:function () {
+                alert("aaa")
+            }
+        }
+    })
+</script>
+</body>
+</html>
