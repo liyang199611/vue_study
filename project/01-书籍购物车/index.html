@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+    <title>Title</title>
+    <style type="text/css">
+        @import "style.css";
+    </style>
+</head>
+<body>
+<di id="app">
+    <table>
+        <thead>
+        <tr>
+            <th>书籍编号</th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="items,index in books">
+            <td>{{items.id}}</td>
+            <td>{{items.name}}</td>
+            <td>{{items.date}}</td>
+            <td>{{getPrice(items.price)}}</td>
+            <td>
+                <button v-on:click="incress(index)" v-bind:disabled="items.count<=1">-</button>
+                {{items.count}}
+                <button v-on:click="add(index)">+</button>
+            </td>
+            <td>
+
+                <button v-on:click="remove(index)">移除</button>
+            </td>
+        </tr>
+        <th>
+            <b v-if="books.length">总价格: {{totalPay()}}</b>
+            <b v-else>购物车为空</b>
+        </th>
+        </tbody>
+    </table>
+</di>
+<script src="../../js/vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
