@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <mycpn v-bind:cmovies="movies" v-bind:cmessage="message"></mycpn>
+</div>
+<script src="../../js/vue.js"></script>
+<!--定义组件模板-->
+<template id="mycpn">
+    <div>
+        <h1>我是子组件</h1>
+        <h2>{{cmessage}}</h2>
+        <ul>
+            <li v-for="items,index in cmovies">{{index}}-{{items}}</li>
+        </ul>
+    </div>
+</template>
+<script>
+    // 父传子 props
+
+    // 定义一个子组件
+    const child = {
+        template:'#mycpn',
+        // props:['cmovies','cmessage'], // 传数组的方式
+        props:{
+            cmovies:{
+                type:Array,
+                default:['西游记','三国演义'],
+                required:true
+            },
+            cmessage:{
+                type: String,
+                default: '默认值'
+            }
+        }
+    }
+    // vue 为父组件
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message:"你好,历阳",
+            // movies:['钢铁侠','红海行动','向日葵','集结号']
+            movies:['钢铁侠','红海行动','向日葵','集结号']
+        },
+        components:{
+            mycpn:child
+        }
+    })
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <mycpn></mycpn>
+    <mycpn></mycpn>
+    <mycpn></mycpn>
+    <mycpn></mycpn>
+    <mycpn></mycpn>
+    <mycpn></mycpn>
+    <mycpn></mycpn>
+</div>
+
+
+<!--先封装一个组件-->
+<template id="mycpn">
+    <div>
+        <h1>当前数据:{{count}}</h1>
+        <button v-on:click="add">+</button>
+        <button v-on:click="des">-</button>
+    </div>
+</template>
+
+<script src="../../js/vue.js"></script>
+<script>
+    <!--注册一个全局组件 -->
+    Vue.component("mycpn",{
+        template:'#mycpn',
+        data(){
+            return{
+                count:0
+            }
+        },
+        methods:{
+            add(){
+                this.count++
+            },
+            des(){
+                this.count--
+            }
+        }
+    });
+
+    const app = new Vue({
+        el:'#app'
+    });
+
+</script>
+</body>
+</html>

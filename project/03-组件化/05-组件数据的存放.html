@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <mycpn></mycpn>
+</div>
+
+<!--组件模板分离的第一种写法-->
+<!--<script type="text/x-template" id="mycpn">-->
+<!--<div>-->
+<!--    <h1>哈哈哈</h1>-->
+<!--    <p>历阳在写代码</p>-->
+<!--</div>-->
+<!--</script>-->
+
+<!--模板组件分离的第二种写法-->
+<template id="mycpn">
+    <div>
+        <h1>哈哈哈</h1>
+        <p>历阳在写代码</p>
+        <h3>{{title}}</h3>
+    </div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+    // 定义一个组件
+    const  mycpn = Vue.extend({
+        template:'#mycpn'
+    });
+
+    // 组件数据的存放
+    // 组件不能直接访问Vue实例里面的数据
+    Vue.component('mycpn',{
+        template:"#mycpn",
+        data:function () {
+            return {
+                title:"my title"
+            }
+        }
+    });
+    const app = new Vue({
+        el:'#app',
+    })
+</script>
+</body>
+</html>
